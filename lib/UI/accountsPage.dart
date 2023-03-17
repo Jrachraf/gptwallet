@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'importWallet.dart';
 
 class accountsPage extends StatefulWidget {
   const accountsPage({Key? key}) : super(key: key);
@@ -8,6 +11,8 @@ class accountsPage extends StatefulWidget {
 }
 
 class _accountsPageState extends State<accountsPage> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +33,15 @@ class _accountsPageState extends State<accountsPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset('assets/pics/logo.png',width: 130,height: 130,),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
-                  Text(
+                  const Text(
                     'GPT Wallet',
                     style: TextStyle(
+                      fontFamily: 'Gilroy',
                       color: Colors.white,
-                      fontSize: 32,
+                      fontSize: 40,
                       fontWeight: FontWeight.w700
                     ),
                   )
@@ -47,24 +53,30 @@ class _accountsPageState extends State<accountsPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 1.5
-                      )
+                  MaterialButton(
+                    height: 50,
+                    color: Colors.black,
+                    minWidth: double.infinity,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(100),
+                        side: BorderSide(
+                            color: Colors.white,
+                            width: 1.5
+                        )
                     ),
-                    child: MaterialButton(
-
-                      onPressed: (){},
-                      child: Text(
-                        'I already have a wallet',
-                        style: TextStyle(
+                    onPressed: (){
+                      Get.to(
+                              ()=> importWallet(),
+                          transition: Transition.cupertino
+                      );
+                    },
+                    child: Text(
+                      'Enter my wallet',
+                      style: TextStyle(
                           color: Colors.white,
-                          fontSize: 16
-                        ),
+                          fontSize: 15,
+                          fontFamily: 'Gilroy',
+                          fontWeight: FontWeight.w600
                       ),
                     ),
                   ),
